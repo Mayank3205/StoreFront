@@ -12,9 +12,10 @@
     <h2>Hello World!!</h2>
 {% endif %}
 <ul>
-    {% for order in orders %}
-        <li>{{ order.id }} - {{ order.customer.first_name }} - {{ order.orderitem.product.id }}</li>
+    {% for item in tag %}
+    	<li>{{ item }} </li>
     {% endfor %}
+
 </ul>
 </body>
 </html>

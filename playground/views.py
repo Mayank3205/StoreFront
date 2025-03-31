@@ -1,28 +1,42 @@
 from importlib import reload
 
+from django.db.models import Count
+from django.db import transaction
 from django.shortcuts import render
 from django.contrib.contenttypes.models import ContentType
-from store.models import Products, Collection
+from store.models import Products, Collection, Order, OrderItem
 from tags.models import TaggedItem
+
 
 # Create your views here.
 
 # 44
-
 def say_hello(request):
 
-    collections = Collection(pk=11)
-    collections.title = 'Games'
-    collections.featured_product = None
-    collections.save()
-
-
-    return render(request, 'hello.html', {'name':'Mayank'})
 
 
 
+    return render(request, 'hello.html', {'name': 'Mayank', 'result': result})
 
 
+
+    # with transaction.atomic():
+    #     order = Order()
+    #     order.customer_id = 1
+    #     order.save()
+    #
+    #     item = OrderItem()
+    #     item.order = order
+    #     item.product_id = 1
+    #     item.unit_price = 10
+    #     item.quantity = 1
+    #     item.save()
+
+
+    # collections = Collection(pk=11)
+    # collections.title = 'Games'
+    # collections.featured_product = None
+    # collections.save()
 
 # from django.db.models import Q, F, Func, Value, ExpressionWrapper, DecimalField
 # from django.db.models.aggregates import Sum, Count, Avg, Max, Min

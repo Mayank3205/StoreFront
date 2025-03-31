@@ -1,3 +1,19 @@
+
 from django.contrib import admin
 
-# Register your models here.
+from . import models
+
+@admin.register(models.Products)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['title', 'unit_price']
+    list_editable = ['unit_price']
+    list_per_page = 25
+
+@admin.register(models.Customer)
+class CustomerAdmin(admin.ModelAdmin):
+    list_display = ['first_name', 'last_name', 'membership']
+    list_editable = ['membership']
+    ordering = ['first_name', 'last_name']
+    list_per_page = 10
+
+admin.site.register(models.Collection)
